@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #76a9ff, #d17aff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        .container {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 400px;
+            text-align: center;
+            padding-bottom: 20px;
+            margin: 20px 0;
+        }
+        .header {
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #56CCF2, #7E57C2);
+            color: white;
+        }
+        .header h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .header p {
+            margin-top: 5px;
+            font-size: 14px;
+        }
+        .form-container {
+            padding: 20px 30px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #6A11CB, #2575FC);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        .footer {
+            padding: 15px;
+            font-size: 12px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Patient Registration</h2>
+            <p>Fill in the details to register a new patient</p>
+        </div>
+
+        <div class="form-container">
+            <form action="/register" method="post">
+                <div class="input-group">
+                    <label for="id">Patient ID</label>
+                    <input type="text" id="id" name="id" required>
+                </div>
+                <div class="input-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" required>
+                </div>
+                <div class="input-group">
+                    <label for="sex">Sex</label>
+                    <input type="text" id="sex" name="sex" required>
+                </div>
+                <div class="input-group">
+                    <label for="dataset">Dataset</label>
+                    <input type="text" id="dataset" name="dataset" required>
+                </div>
+                <div class="input-group">
+                    <label for="cp">Chest Pain Type (CP)</label>
+                    <input type="text" id="cp" name="cp" required>
+                </div>
+                <div class="input-group">
+                    <label for="trestbps">Resting Blood Pressure (Trestbps)</label>
+                    <input type="number" id="trestbps" name="trestbps" required>
+                </div>
+                <div class="input-group">
+                    <label for="chol">Cholesterol (Chol)</label>
+                    <input type="number" id="chol" name="chol" required>
+                </div>
+                <div class="input-group">
+                    <label for="fbs">Fasting Blood Sugar (FBS)</label>
+                    <input type="text" id="fbs" name="fbs" required>
+                </div>
+                <div class="input-group">
+                    <label for="restecg">Resting Electrocardiographic Results (Restecg)</label>
+                    <input type="text" id="restecg" name="restecg" required>
+                </div>
+                <div class="input-group">
+                    <label for="thalch">Maximum Heart Rate Achieved (Thalach)</label>
+                    <input type="number" id="thalch" name="thalch" required>
+                </div>
+                <div class="input-group">
+                    <label for="exang">Exercise Induced Angina (Exang)</label>
+                    <input type="text" id="exang" name="exang" required>
+                </div>
+                <div class="input-group">
+                    <label for="oldpeak">ST Depression Induced by Exercise (Oldpeak)</label>
+                    <input type="text" id="oldpeak" name="oldpeak" required>
+                </div>
+                <div class="input-group">
+                    <label for="slope">Slope of the Peak Exercise ST Segment</label>
+                    <input type="text" id="slope" name="slope" required>
+                </div>
+                <div class="input-group">
+                    <label for="ca">Number of Major Vessels Colored by Fluoroscopy (CA)</label>
+                    <input type="text" id="ca" name="ca" required>
+                </div>
+                <div class="input-group">
+                    <label for="thal">Thalassemia (Thal)</label>
+                    <input type="text" id="thal" name="thal" required>
+                </div>
+                <div class="input-group">
+                    <label for="num">Diagnosis of Heart Disease (Num)</label>
+                    <input type="text" id="num" name="num" required>
+                </div>
+
+                <button type="submit" class="btn">Register Patient</button>
+            </form>
+        </div>
+
+        <div class="footer">🔒 Secure patient data entry</div>
+    </div>
+</body>
+</html>

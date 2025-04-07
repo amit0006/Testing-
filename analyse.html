@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Analysis & Prescription</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #76a9ff, #d17aff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        .container {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 500px;
+            text-align: center;
+            padding-bottom: 20px;
+            margin: 20px 0;
+        }
+        .header {
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #56CCF2, #7E57C2);
+            color: white;
+        }
+        .header h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .form-container {
+            padding: 20px 30px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .input-group input, .input-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        .ai-summary {
+            background: #e3f2fd;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            text-align: left;
+            font-size: 14px;
+        }
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #6A11CB, #2575FC);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        .prescription-list {
+            margin-top: 15px;
+            text-align: left;
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 10px;
+            border-radius: 10px;
+            background: #f5f5f5;
+        }
+        .prescription-item {
+            background: #e3f2fd;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 8px;
+        }
+        .footer {
+            padding: 15px;
+            font-size: 12px;
+            color: #555;
+        }
+    </style>
+    <script>
+        function generateAISummary() {
+            let patientId = document.getElementById("patientId").value.trim();
+            if (patientId === "") {
+                alert("Please enter a Patient ID first.");
+                return;
+            }
+
+            let summaryText = `Patient ID: ${patientId}\n
+            The patient has a history of elevated cholesterol and high blood pressure. 
+            Recent test results indicate a slight increase in resting heart rate, with a mild risk of cardiac issues. 
+            No immediate threats detected, but lifestyle modifications and medication may be required.`;
+
+            document.getElementById("aiSummary").innerText = summaryText;
+        }
+
+        function addPrescription() {
+            let doctorName = document.getElementById("doctorName").value.trim();
+            let prescriptionText = document.getElementById("prescription").value.trim();
+            if (doctorName === "" || prescriptionText === "") {
+                alert("Please enter both doctor name and prescription.");
+                return;
+            }
+            
+            let prescriptionList = document.getElementById("prescriptionList");
+
+            let prescriptionItem = document.createElement("div");
+            prescriptionItem.classList.add("prescription-item");
+            prescriptionItem.innerHTML = `<strong>${doctorName}:</strong> ${prescriptionText}`;
+
+            prescriptionList.appendChild(prescriptionItem);
+
+            document.getElementById("doctorName").value = "";
+            document.getElementById("prescription").value = "";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>AI Analysis & Doctor's Prescription</h2>
+            <p>AI generates patient summary, doctors provide prescriptions</p>
+        </div>
+
+        <div class="form-container">
+            <div class="input-group">
+                <label for="patientId">Patient ID</label>
+                <input type="text" id="patientId" name="patientId" required>
+            </div>
+
+            <button class="btn" onclick="generateAISummary()">Generate AI Summary</button>
+
+            <div class="ai-summary" id="aiSummary">
+                <p><strong>AI Summary will appear here...</strong></p>
+            </div>
+
+            <div class="input-group">
+                <label for="doctorName">Doctor's Name</label>
+                <input type="text" id="doctorName" name="doctorName" placeholder="Enter doctor's name">
+            </div>
+
+            <div class="input-group">
+                <label for="prescription">Prescription</label>
+                <textarea id="prescription" name="prescription" rows="2" placeholder="Enter prescription..."></textarea>
+            </div>
+
+            <button class="btn" onclick="addPrescription()">Add Prescription</button>
+
+            <div class="prescription-list" id="prescriptionList">
+                <p><strong>Prescriptions:</strong></p>
+            </div>
+
+            <button class="btn">Submit Analysis</button>
+        </div>
+
+        <div class="footer">⚕️ AI-generated analysis with doctor’s prescriptions</div>
+    </div>
+</body>
+</html>

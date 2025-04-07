@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query - Medical Assistant</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #f0f7ff, #ffffff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .logo {
+            width: 80px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #1a73e8;
+            font-size: 28px;
+            margin: 0;
+        }
+
+        .subtitle {
+            color: #5f6368;
+            margin: 8px 0 24px;
+        }
+
+        .message-box {
+            background: #e8f1ff;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+
+        .message-box strong {
+            color: #1a73e8;
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        label {
+            text-align: left;
+            font-weight: bold;
+            color: #1a73e8;
+        }
+
+        select {
+            padding: 12px;
+            border: 1px solid #d1d1d1;
+            border-radius: 8px;
+            outline: none;
+            cursor: pointer;
+            background: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        select:hover {
+            border-color: #1a73e8;
+        }
+
+        .send-button {
+            background: #1a73e8;
+            border: none;
+            padding: 12px 16px;
+            cursor: pointer;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .send-button:hover {
+            background: #155ab6;
+        }
+
+        .footer-link {
+            margin-top: 24px;
+            font-size: 12px;
+            color: #5f6368;
+        }
+
+        .footer-link a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+
+        .footer-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="stethoscope-icon-2316460_960_720.webp" alt="Medical Logo" class="logo">
+        <h1>query ✨</h1>
+        <p class="subtitle">Your friendly healthcare companion</p>
+
+        <div class="message-box">
+            <p><strong>Hi there! 👋 I'm query, your medical assistant.</strong><br>
+               To connect you with your patient, I just need your unique patient ID.</p>
+        </div>
+
+        <div class="input-container">
+            <label for="options">Select an option:</label>
+            <select id="options">
+                <option value="analyse.html">AI Analysis</option>
+                <option value="register.html">Register Patient</option>
+                <option value="update.html">Update Details</option>
+                <option value="get_details.html">Get Details</option>
+            </select>
+            
+            <button class="send-button" onclick="submitOption()">Submit</button>
+        </div>
+
+        <p class="footer-link">Secure & Confidential Healthcare Communication</p>
+        <p class="footer-link">Need help? Contact support at <a href="mailto:help@query.medical">help@query.medical</a></p>
+    </div>
+
+    <script>
+        function submitOption() {
+            const selectedPage = document.getElementById('options').value;
+            window.location.href = selectedPage;
+        }
+    </script>
+</body>
+</html>

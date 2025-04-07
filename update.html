@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Patient Details</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #76a9ff, #d17aff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        .container {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 400px;
+            text-align: center;
+            padding-bottom: 20px;
+            margin: 20px 0;
+        }
+        .header {
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #56CCF2, #7E57C2);
+            color: white;
+        }
+        .header h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .header p {
+            margin-top: 5px;
+            font-size: 14px;
+        }
+        .form-container {
+            padding: 20px 30px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #6A11CB, #2575FC);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        .checkbox-group {
+            text-align: left;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .checkbox-group label {
+            display: block;
+            margin: 5px 0;
+        }
+        .update-fields {
+            display: none;
+            margin-top: 20px;
+        }
+        .footer {
+            padding: 15px;
+            font-size: 12px;
+            color: #555;
+        }
+    </style>
+    <script>
+        function showUpdateFields() {
+            let selectedAttributes = document.querySelectorAll('input[name="attributes"]:checked');
+            let updateFieldsDiv = document.getElementById("updateFields");
+            updateFieldsDiv.innerHTML = "";
+            if (selectedAttributes.length > 0) {
+                updateFieldsDiv.style.display = "block";
+                selectedAttributes.forEach(attr => {
+                    let inputGroup = document.createElement("div");
+                    inputGroup.classList.add("input-group");
+
+                    let label = document.createElement("label");
+                    label.textContent = attr.value.toUpperCase();
+
+                    let input = document.createElement("input");
+                    input.type = "text";
+                    input.name = attr.value;
+
+                    inputGroup.appendChild(label);
+                    inputGroup.appendChild(input);
+                    updateFieldsDiv.appendChild(inputGroup);
+                });
+            } else {
+                updateFieldsDiv.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Update Patient Details</h2>
+            <p>Enter Patient ID and select fields to update</p>
+        </div>
+
+        <div class="form-container">
+            <div class="input-group">
+                <label for="id">Patient ID</label>
+                <input type="text" id="id" name="id" required>
+            </div>
+
+            <p>Select attributes to update:</p>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="attributes" value="age" onchange="showUpdateFields()"> Age</label>
+                <label><input type="checkbox" name="attributes" value="dataset" onchange="showUpdateFields()"> Dataset</label>
+                <label><input type="checkbox" name="attributes" value="cp" onchange="showUpdateFields()"> CP</label>
+                <label><input type="checkbox" name="attributes" value="trestbps" onchange="showUpdateFields()"> Trestbps</label>
+                <label><input type="checkbox" name="attributes" value="chol" onchange="showUpdateFields()"> Chol</label>
+                <label><input type="checkbox" name="attributes" value="fbs" onchange="showUpdateFields()"> FBS</label>
+                <label><input type="checkbox" name="attributes" value="restecg" onchange="showUpdateFields()"> RestECG</label>
+                <label><input type="checkbox" name="attributes" value="thalch" onchange="showUpdateFields()"> Thalch</label>
+                <label><input type="checkbox" name="attributes" value="exang" onchange="showUpdateFields()"> Exang</label>
+                <label><input type="checkbox" name="attributes" value="oldpeak" onchange="showUpdateFields()"> Oldpeak</label>
+                <label><input type="checkbox" name="attributes" value="slope" onchange="showUpdateFields()"> Slope</label>
+                <label><input type="checkbox" name="attributes" value="ca" onchange="showUpdateFields()"> CA</label>
+                <label><input type="checkbox" name="attributes" value="thal" onchange="showUpdateFields()"> Thal</label>
+                <label><input type="checkbox" name="attributes" value="num" onchange="showUpdateFields()"> Num</label>
+            </div>
+
+            <div id="updateFields" class="update-fields"></div>
+
+            <button class="btn">Update Details</button>
+        </div>
+
+        <div class="footer">⚕️ Securely update patient records</div>
+    </div>
+</body>
+</html>
